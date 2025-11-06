@@ -8,56 +8,122 @@
   <script src="https://kit.fontawesome.com/a2e0a3e5b3.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="hero">
-    <div class="overlay"></div>
-    <header>
-      <h1><i class="fas fa-robot"></i> Tablemate Robot</h1>
-      <p class="tagline">Your Smart Table Companion 🤖</p>
-    </header>
+  <header>
+    <h1><i class="fas fa-robot"></i> Tablemate Robot</h1>
+    <p class="tagline">Your Smart Table Companion 🤖</p>
+  </header>
 
-    <div class="content">
-      <img src="tablemate1.jpg" alt="Tablemate Robot" class="robot-img">
-      <h2>💥 Price Drop! <span class="price">₹1899</span> → <span class="discount">₹899</span> (53% OFF)</h2>
-      <p class="desc">
-        Meet <b>Tablemate</b> — your interactive robotic assistant!  
-        It can talk, dance, respond to commands, and sync with the <b>Cronos app</b> for smart automation.  
-        Use it on your desk, car, or workspace for fun, reminders, or to impress friends 😎.
-      </p>
+  <section class="hero">
+    <img src="tablemate1.jpg" alt="Tablemate Robot" class="robot-img">
+    <h2>💥 Price Drop! <span class="price">₹1899</span> → <span class="discount">₹899</span> (53% OFF)</h2>
+    <p class="desc">
+      Meet <b>Tablemate</b> — your interactive robotic assistant!
+      It can talk, dance, respond to commands, and sync with the <b>Cronos app</b>.
+    </p>
+    <button id="orderBtn" class="glow-btn">🛒 Order Now</button>
 
-      <button id="orderBtn" class="glow-btn">🛒 Order Now</button>
+    <div id="orderSection" class="hidden">
+      <p>📦 Place your order via the form below and complete payment using UPI.</p>
+      <a href="https://forms.gle/BH6GJhoBGyvBZE277" target="_blank" class="form-link">📝 Order Form</a>
+      <div class="qr-section">
+        <img src="upi_qr.jpg" alt="UPI QR Code">
+        <p>Scan to Pay – UPI ID: <b>sagarghatak04@upi</b></p>
+      </div>
+    </div>
+  </section>
 
-      <div id="orderSection" class="hidden">
-        <p>📦 Place your order via the form below and complete payment using UPI.</p>
-        <a href="https://forms.gle/BH6GJhoBGyvBZE277" target="_blank" class="form-link">📝 Order Form</a>
-        <div class="qr-section">
-          <img src="upi_qr.jpg" alt="UPI QR Code">
-          <p>Scan to Pay – UPI ID: <b>sagarghatak04@upi</b></p>
-        </div>
+  <section class="gallery">
+    <h2>🖼️ Gallery</h2>
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <img src="tablemate1.jpg" class="zoomable">
+        <img src="tablemate2.jpg" class="zoomable">
+        <img src="tablemate3.jpg" class="zoomable">
+        <img src="tablemate4.jpg" class="zoomable">
+        <img src="tablemate5.jpg" class="zoomable">
+        <img src="tablemate6.jpg" class="zoomable">
       </div>
     </div>
 
-    <section class="reels">
-      <h3>📱 Latest Reels from Instagram</h3>
-      <button id="toggleReels" class="glow-btn small">Show / Hide Reels</button>
-      <div id="reelGallery" class="hidden">
-        <iframe src="https://www.instagram.com/crazyfpv_s/embed" frameborder="0"></iframe>
-      </div>
-    </section>
+    <div id="lightbox">
+      <img id="lightbox-img" src="">
+    </div>
+  </section>
 
-    <footer>
-      <p>For bulk orders or queries: <b>sagarghatak04@gmail.com</b></p>
-      <p>Follow us on Instagram: <a href="https://www.instagram.com/crazyfpv_s" target="_blank">@crazyfpv_s</a></p>
-    </footer>
-  </div>
+  <section class="face-animation">
+    <h2>🤖 Tablemate Mood</h2>
+    <canvas id="faceCanvas"></canvas>
+  </section>
 
-  <script>
-    document.getElementById('orderBtn').addEventListener('click', () => {
-      document.getElementById('orderSection').classList.toggle('hidden');
-    });
+  <section class="reels">
+    <h3>📱 Latest Reels from Instagram</h3>
+    <button id="toggleReels" class="glow-btn small">Show / Hide Reels</button>
+    <div id="reelGallery" class="hidden">
+      <iframe src="https://www.instagram.com/crazyfpv_s/embed" frameborder="0"></iframe>
+    </div>
+  </section>
 
-    document.getElementById('toggleReels').addEventListener('click', () => {
-      document.getElementById('reelGallery').classList.toggle('hidden');
-    });
-  </script>
+  <footer>
+    <p>For bulk orders: <b>sagarghatak04@gmail.com</b></p>
+    <p>Instagram: <a href="https://www.instagram.com/crazyfpv_s" target="_blank">@crazyfpv_s</a></p>
+  </footer>
+
+<script>
+const orderBtn = document.getElementById('orderBtn');
+orderBtn.addEventListener('click', () => {
+  document.getElementById('orderSection').classList.toggle('hidden');
+});
+
+const toggleBtn = document.getElementById('toggleReels');
+toggleBtn.addEventListener('click', () => {
+  document.getElementById('reelGallery').classList.toggle('hidden');
+});
+
+/* Lightbox */
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+document.querySelectorAll(".zoomable").forEach(img => {
+  img.addEventListener("click", () => {
+    lightboxImg.src = img.src;
+    lightbox.classList.add("active");
+  });
+});
+lightbox.addEventListener("click", () => {
+  lightbox.classList.remove("active");
+});
+
+/* Carousel */
+const track = document.querySelector('.carousel-track');
+let scrollX = 0;
+function autoScroll() {
+  scrollX += 1;
+  if (scrollX >= track.scrollWidth) scrollX = 0;
+  track.style.transform = `translateX(-${scrollX}px)`;
+  requestAnimationFrame(autoScroll);
+}
+autoScroll();
+
+/* Random face canvas */
+const canvas = document.getElementById('faceCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = 200;
+canvas.height = 100;
+function drawFace() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#00eaff';
+  let mood = Math.floor(Math.random() * 3);
+  if (mood === 0) {
+    ctx.fillRect(40,30,20,20); ctx.fillRect(140,30,20,20); ctx.fillRect(90,70,20,5);
+  } else if (mood === 1) {
+    ctx.fillRect(40,30,20,10); ctx.fillRect(140,30,20,10); ctx.fillRect(90,70,40,5);
+  } else {
+    ctx.fillRect(40,35,20,8); ctx.fillRect(140,35,20,8);
+    ctx.beginPath(); ctx.arc(100,70,20,0,Math.PI);
+    ctx.strokeStyle='#00eaff'; ctx.lineWidth=4; ctx.stroke();
+  }
+}
+setInterval(drawFace, 800);
+</script>
+
 </body>
 </html>
