@@ -1,72 +1,132 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Orbitron', sans-serif;
+/* ========== Base ========== */
+:root{
+  --bg:#070b1a;
+  --glass:rgba(255,255,255,.06);
+  --stroke:rgba(255,255,255,.12);
+  --glow1:#4dd2ff;   /* blue */
+  --glow2:#a66bff;   /* purple */
+  --text:#eafaff;
+  --muted:#9ad6ea;
+  --accent:#91e5ff;
 }
 
-body {
-  color: #fff;
-  background: radial-gradient(circle at center, #01010a, #000);
-  overflow-x: hidden;
-  position: relative;
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:"Orbitron",system-ui,Segoe UI,Roboto,Arial;
+  color:var(--text);
+  background: radial-gradient(1000px 600px at 20% -10%, rgba(77,210,255,.10), transparent 60%),
+              radial-gradient(900px 600px at 120% 10%, rgba(166,107,255,.10), transparent 60%),
+              var(--bg);
+  min-height:100vh;
 }
 
-/* ===== Animated Grid Background ===== */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background: repeating-linear-gradient(
-      to right,
-      rgba(0, 234, 255, 0.1) 0px,
-      rgba(0, 234, 255, 0.1) 2px,
-      transparent 2px,
-      transparent 80px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      rgba(0, 234, 255, 0.1) 0px,
-      rgba(0, 234, 255, 0.1) 2px,
-      transparent 2px,
-      transparent 80px
-    );
-  animation: moveGrid 30s linear infinite;
-  z-index: -2;
+/* background layers */
+.bg{position:fixed;inset:0;pointer-events:none;z-index:-2}
+.grid{
+  background-image:
+    linear-gradient(transparent 96%, rgba(255,255,255,.08) 97%),
+    linear-gradient(90deg, transparent 96%, rgba(255,255,255,.08) 97%);
+  background-size: 60px 60px, 60px 60px;
+  opacity:.12;
+  animation:gridMove 30s linear infinite;
+}
+@keyframes gridMove{from{transform:translateY(0)}to{transform:translateY(-120px)}}
+
+.glow{
+  z-index:-1;
+  background:
+    radial-gradient(800px 400px at 15% 20%, rgba(77,210,255,.25), transparent 60%),
+    radial-gradient(900px 500px at 85% 80%, rgba(166,107,255,.22), transparent 65%);
+  filter:saturate(120%) blur(0.2px);
+  animation:glowPulse 7s ease-in-out infinite alternate;
+}
+@keyframes glowPulse{from{opacity:.6}to{opacity:.9}}
+
+/* layout */
+.wrap{max-width:1040px;margin:24px auto;padding:0 16px}
+.glass{
+  background:var(--glass);
+  border:1px solid var(--stroke);
+  border-radius:16px;
+  padding:22px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 40px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.04) inset;
 }
 
-@keyframes moveGrid {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-80px, -80px); }
+/* brand */
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:42px;height:42px;border-radius:10px;
+  background:linear-gradient(135deg,var(--glow1),var(--glow2));
+  display:grid;place-items:center;color:#001;font-weight:800;
+  box-shadow:0 0 22px rgba(77,210,255,.35), 0 0 22px rgba(166,107,255,.25) inset;
+}
+h1{margin:0;font-size:28px;letter-spacing:.5px}
+.sub{margin:2px 0 0;color:var(--muted);font-size:13px}
+
+/* hero */
+.hero h2{margin:0 0 6px}
+.lead{max-width:760px;margin:8px auto 14px;color:var(--muted);line-height:1.6}
+.accent{
+  background:linear-gradient(90deg,var(--glow1),var(--glow2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 24px rgba(77,210,255,.15);
 }
 
-/* ===== Glowing Circuit Background ===== */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url('https://cdn.pixabay.com/photo/2020/03/19/09/17/circuit-4940065_1280.png') repeat;
-  background-size: cover;
-  mix-blend-mode: screen;
-  opacity: 0.15;
-  z-index: -1;
-  animation: glowCircuit 6s ease-in-out infinite alternate;
+/* price */
+.price{display:flex;align-items:center;gap:12px;justify-content:center;margin:8px 0 14px}
+.price .old{color:#ff9b9b;text-decoration:line-through;opacity:.8}
+.price .now{font-size:22px;font-weight:800;color:#00ffb3;text-shadow:0 0 18px rgba(0,255,179,.25)}
+.price .offer{font-size:12px;color:var(--muted)}
+
+/* buttons */
+.btn{
+  border:none;border-radius:12px;padding:12px 18px;
+  background:linear-gradient(90deg,var(--glow1),var(--glow2));
+  color:#001;font-weight:900;letter-spacing:.5px;cursor:pointer;
+  box-shadow:0 8px 30px rgba(77,210,255,.25),0 0 0 1px rgba(255,255,255,.06) inset;
+  transition:transform .15s, box-shadow .15s, filter .2s;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 60px rgba(77,210,255,.28)}
+.btn-outline{
+  background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.18);
+  box-shadow:none;
+}
+.btn-outline:hover{filter:brightness(1.2)}
+
+/* order block */
+.order{margin-top:16px}
+.hidden{display:none}
+.steps{max-width:760px;margin:0 auto 12px;padding-left:18px;color:var(--muted);text-align:left}
+.steps li{margin:6px 0}
+.order-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center}
+.qr img{width:170px;height:auto;border-radius:12px;border:1px solid var(--stroke);box-shadow:0 8px 30px rgba(0,0,0,.45)}
+.muted{color:var(--muted);font-size:13px;margin-top:6px}
+
+/* features */
+h3{margin:0 0 8px}
+.features{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:10px;margin:8px 0 0;padding:0;list-style:none
+}
+.features li{
+  padding:10px;border:1px solid var(--stroke);border-radius:12px;
+  background:rgba(255,255,255,.03);
 }
 
-@keyframes glowCircuit {
-  from { opacity: 0.1; }
-  to { opacity: 0.25; }
+/* gallery with small thumbnails */
+.gallery{
+  display:grid;gap:8px;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
 }
+.gallery img{
+  width:100%;height:120px;object-fit:cover;border-radius:12px;
+  border:1px solid var(--stroke);
+  box-shadow:0 8px 30px rgba(0,0,0,.35);
+  transition:transform .15s, box-shadow .15s;
+}
+.gallery img:hover{transform:translateY(-4px);box-shadow:0 16px 50px rgba(0,0,0,.45)}
 
-/* ===== Header ===== */
-header {
-  text-align: center;
-  padding: 2rem 1rem;
-  background: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 20px #00
-/* placeholder css */
+/* footer */
+.footer{background:transparent;text-align:center;color:var(--muted);border:none}
