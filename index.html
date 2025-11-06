@@ -1,94 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tablemate Robot — Tiny desk companion</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tablemate Robot</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="bg-wrap">
-    <div class="grid"></div>
-    <div class="circuits"></div>
-    <div class="lines"></div>
-  </div>
+  <header>
+    <div class="logo-container">
+      <img src="https://cdn-icons-png.flaticon.com/512/4712/4712102.png" class="robot-icon" alt="Robot Logo">
+      <h1>Tablemate Robot</h1>
+    </div>
+    <p class="tagline">Your Smart Robotic Desk Buddy 🤖</p>
+  </header>
 
-  <div class="container">
-    <header class="header">
-      <div class="site-title">
-        <div class="logo-robot" aria-hidden="true">
-          <div class="robot-eye"></div>
-          <div class="robot-blink"></div>
-        </div>
-        <div style="text-align:left">
-          <h1>🤖 Tablemate Robot</h1>
-          <p style="font-size:13px;margin-top:4px;color:var(--muted)">Your smart table companion</p>
-        </div>
-      </div>
-    </header>
+  <section class="hero">
+    <h2>Meet the <span class="highlight">Future of Desk Companions</span></h2>
+    <p>Tablemate is an intelligent robotic assistant designed to make your workspace smarter, interactive, and fun!</p>
+    <a href="https://forms.gle/BH6GJhoBGyvBZE277" class="btn glow-buy">💠 BUY NOW @ ₹899 (53% OFF)</a>
+  </section>
 
-    <main>
-      <section class="hero">
-        <img src="tablemate1.jpg" alt="Tablemate">
-        <div class="hero-card">
-          <h2 style="margin-top:0">About Tablemate</h2>
-          <p style="color:var(--muted)">Small, open-hardware robot with an expressive OLED face, sound effects, Wi‑Fi/Bluetooth (ESP32), and rechargeable battery. Perfect as a desk buddy, reminder device, and a maker's toy.</p>
-          <div class="features" style="margin-top:10px">
-            <div class="feature">💡 Animated OLED face</div>
-            <div class="feature">🔔 Reminders & timers</div>
-            <div class="feature">🎵 Sound & chimes</div>
-            <div class="feature">📱 Cronos App integration</div>
-            <div class="feature">🔋 USB rechargeable battery</div>
-            <div class="feature">🧩 Open & programmable</div>
-          </div>
-        </div>
-      </section>
+  <section class="features">
+    <h2>✨ Features</h2>
+    <ul>
+      <li>Responds to your voice and gestures 🎤</li>
+      <li>Shows emotions — smiles, blinks, and reacts 😄</li>
+      <li>Connects with the <b>Cronos App</b> for smart automation 📱</li>
+      <li>Can dance, follow commands, and remind tasks 🕹️</li>
+      <li>Perfect for work desks, study tables, or gifts 🎁</li>
+      <li>Rechargeable & portable ⚡</li>
+    </ul>
+  </section>
 
-      <section class="purchase">
-        <div class="card hero-card">
-          <p class="price-old">₹1899</p>
-          <p class="price-now">₹899</p>
-          <span class="offer-badge">Limited Time Offer</span>
-          <div style="margin-top:12px">
-            <a class="buybtn pulse" href="https://forms.gle/BH6GJhoBGyvBZE277" target="_blank" role="button">🛒 Buy Now ₹899 (Limited Offer!)</a>
-          </div>
-          <div style="margin-top:12px;color:var(--muted)">Scan UPI QR or pay using the UPI ID shown. After payment, open the order form and upload the payment screenshot or paste the Txn ID.</div>
-        </div>
+  <section class="gallery">
+    <h2>🖼️ Gallery</h2>
+    <div class="gallery-grid">
+      <img src="tablemate1.jpg" alt="Tablemate Robot Image 1">
+      <img src="tablemate2.jpg" alt="Tablemate Robot Image 2">
+      <img src="https://cdn.pixabay.com/photo/2023/07/06/19/17/robot-8112449_960_720.jpg" alt="Robot Image 3">
+      <img src="https://cdn.pixabay.com/photo/2023/06/15/12/47/ai-8065618_1280.jpg" alt="Robot Image 4">
+    </div>
+  </section>
 
-        <div class="card hero-card qr">
-          <img src="upi_qr.jpg" alt="UPI QR">
-          <div style="font-size:14px;color:var(--muted)">Scan to pay ₹899</div>
-          <div style="margin-top:8px"><a class="buybtn" href="https://forms.gle/BH6GJhoBGyvBZE277" target="_blank">Open Order Form</a></div>
-        </div>
-      </section>
+  <section class="reels">
+    <h2>📱 Latest Reels from <span class="highlight">@crazyfpv_s</span></h2>
+    <p>Tap below to explore our latest videos and Tablemate in action 👇</p>
+    <button id="toggleReels" class="btn">🎥 Show Reels</button>
+    <div id="reelContainer" class="reel-gallery">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/crazyfpv_s/" data-instgrm-version="14" style="margin:auto;"></blockquote>
+      <script async src="//www.instagram.com/embed.js"></script>
+    </div>
+  </section>
 
-      <section style="margin-top:18px">
-        <div class="hero-card">
-          <h3 style="margin-top:0">Gallery</h3>
-          <img src="tablemate2.jpg" alt="Tablemate" style="width:100%;max-width:520px;height:260px;object-fit:cover;border-radius:8px;margin-top:8px">
-        </div>
-      </section>
+  <section class="contact">
+    <h2>📩 For Bulk Orders or Queries</h2>
+    <p>Email us at <a href="mailto:sagarghatak04@gmail.com" class="highlight">sagarghatak04@gmail.com</a></p>
+  </section>
 
-      <section style="margin-top:18px">
-        <div class="hero-card">
-          <h3 style="margin-top:0">Contact & Bulk Orders</h3>
-          <p style="color:var(--muted)">For bulk orders or custom builds, email: <a href="mailto:sagarghatak04@gmail.com">sagarghatak04@gmail.com</a></p>
-          <p style="color:var(--muted)">Follow us: <a href="https://www.instagram.com/crazyfpv_s?igsh=MXQzbHB2MjZod3dkZQ%3D%3D&utm_source=qr" target="_blank">@crazyfpv_s</a></p>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>© 2025 Tablemate Robot — Made for makers.</p>
-    </footer>
-  </div>
+  <footer>
+    <p>© 2025 Tablemate Robot | Powered by Crazy FPV | All Rights Reserved</p>
+    <p><a href="https://www.instagram.com/crazyfpv_s" target="_blank">@crazyfpv_s</a></p>
+  </footer>
 
   <script>
-    document.querySelectorAll('.buybtn').forEach(b => {
-      b.addEventListener('click', () => {
-        b.classList.remove('pulse');
-        setTimeout(()=> b.classList.add('pulse'), 80);
-      });
+    // Toggle Instagram Reels Section
+    const toggleBtn = document.getElementById('toggleReels');
+    const reelContainer = document.getElementById('reelContainer');
+    let visible = false;
+
+    toggleBtn.addEventListener('click', () => {
+      visible = !visible;
+      reelContainer.style.display = visible ? 'block' : 'none';
+      toggleBtn.textContent = visible ? '🔽 Hide Reels' : '🎥 Show Reels';
     });
   </script>
 </body>
