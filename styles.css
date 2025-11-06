@@ -1,1 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;
+}
+
+body {
+  color: #fff;
+  background: radial-gradient(circle at center, #01010a, #000);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== Animated Grid Background ===== */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+      to right,
+      rgba(0, 234, 255, 0.1) 0px,
+      rgba(0, 234, 255, 0.1) 2px,
+      transparent 2px,
+      transparent 80px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 234, 255, 0.1) 0px,
+      rgba(0, 234, 255, 0.1) 2px,
+      transparent 2px,
+      transparent 80px
+    );
+  animation: moveGrid 30s linear infinite;
+  z-index: -2;
+}
+
+@keyframes moveGrid {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-80px, -80px); }
+}
+
+/* ===== Glowing Circuit Background ===== */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('https://cdn.pixabay.com/photo/2020/03/19/09/17/circuit-4940065_1280.png') repeat;
+  background-size: cover;
+  mix-blend-mode: screen;
+  opacity: 0.15;
+  z-index: -1;
+  animation: glowCircuit 6s ease-in-out infinite alternate;
+}
+
+@keyframes glowCircuit {
+  from { opacity: 0.1; }
+  to { opacity: 0.25; }
+}
+
+/* ===== Header ===== */
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 20px #00
 /* placeholder css */
