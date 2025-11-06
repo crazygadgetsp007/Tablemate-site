@@ -13,7 +13,8 @@
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
-  font-family:"Orbitron",system-ui,Segoe UI,Roboto,Arial;
+  font-family: Georgia, serif;
+
   color:var(--text);
   background: radial-gradient(1000px 600px at 20% -10%, rgba(77,210,255,.10), transparent 60%),
               radial-gradient(900px 600px at 120% 10%, rgba(166,107,255,.10), transparent 60%),
