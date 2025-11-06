@@ -14,7 +14,8 @@
 html,body{margin:0}
 body{
   font-family: Georgia, serif;
-
+   position: relative;
+  z-index: 0;
   color:var(--text);
   background: radial-gradient(1000px 600px at 20% -10%, rgba(77,210,255,.10), transparent 60%),
               radial-gradient(900px 600px at 120% 10%, rgba(166,107,255,.10), transparent 60%),
@@ -29,7 +30,7 @@ body{
     linear-gradient(transparent 96%, rgba(255,255,255,.08) 97%),
     linear-gradient(90deg, transparent 96%, rgba(255,255,255,.08) 97%);
   background-size: 60px 60px, 60px 60px;
-  opacity:.12;
+  opacity:0.05;
   animation:gridMove 30s linear infinite;
 }
 @keyframes gridMove{from{transform:translateY(0)}to{transform:translateY(-120px)}}
@@ -188,7 +189,7 @@ h3{margin:0 0 8px}
   inset: 0;
   pointer-events: none;
   opacity: 0.12;
-  z-index: -3;
+  z-index: -1;
   background-image: url("data:image/svg+xml;utf8,\
   <svg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'>\
   <path d='M0 200 H800 M0 400 H800 M0 600 H800 M200 0 V800 M400 0 V800 M600 0 V800' stroke='%2300ffff' stroke-width='2' fill='none' stroke-dasharray='8 12' />\
